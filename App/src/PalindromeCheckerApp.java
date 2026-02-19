@@ -13,6 +13,7 @@ public class PalindromeCheckerApp {
          */
         System.out.println("Welcome to Palindrome Checker App Management System");
         System.out.println("Version: 1.0");
+//-------------------------------------------------------------------------------------------------
         /**
          * =====================================================
          *       MAIN CLASS - UseCase2PalindromeCheckerApp
@@ -36,6 +37,24 @@ public class PalindromeCheckerApp {
             System.out.println("Is it a palindrome: True");}
         else{
             System.out.println("Is it a palindrome: False");
+        }
+//-----------------------------------------------------------------------------------------------------
+        /**
+         * =====================================================
+         *       MAIN CLASS - UseCase3PalindromeCheckerApp
+         * =====================================================
+         *
+         * Use Case3: Reverse String Based Palindrome Chcek
+         */
+        String reversedStr = "";
+
+        for (i = length - 1; i >= 0; i--) {
+            reversedStr = reversedStr + input.charAt(i);
+        }
+        if (input.equals(reversedStr)) {
+            System.out.println(input + " is a Palindrome.");
+        } else {
+            System.out.println(input + " is not a Palindrome.");
         }
     }
 }
