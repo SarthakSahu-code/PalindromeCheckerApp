@@ -56,5 +56,38 @@ public class PalindromeCheckerApp {
         } else {
             System.out.println(input + " is not a Palindrome.");
         }
+//-------------------------------------------------------------------------------------------------
+        /**
+         * =====================================================
+         *       MAIN CLASS - UseCase4PalindromeCheckerApp
+         * =====================================================
+         *
+         * Use Case4: Character Array based validation
+         */
+        char[] charArray = input.toCharArray();
+
+        int left = 0;
+        int right = length - 1;
+        isPalindrome = true;
+
+        while (left < right) {
+            if (charArray[left] != charArray[right]) {
+                isPalindrome = false;
+                break; // Exit the loop early
+            }
+
+            // Move pointers toward the center
+            left++;
+            right--;
+        }
+
+        // 5. Output the result
+        if (isPalindrome) {
+            System.out.println("\"" + input + "\" is a Palindrome.");
+        } else {
+            System.out.println("\"" + input + "\" is not a Palindrome.");
+        }
+
+        sc.close();
     }
 }
