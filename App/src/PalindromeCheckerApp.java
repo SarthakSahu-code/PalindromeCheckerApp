@@ -91,7 +91,7 @@ public class PalindromeCheckerApp {
 //---------------------------------------------------------------------------------------------------
         /**
          * =====================================================
-         *       MAIN CLASS - UseCase4PalindromeCheckerApp
+         *       MAIN CLASS - UseCase5PalindromeCheckerApp
          * =====================================================
          *
          * Use Case5: Stack Based Palindrome Checker
