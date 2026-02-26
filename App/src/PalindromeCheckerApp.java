@@ -111,7 +111,7 @@ public class PalindromeCheckerApp {
         }
 
         if(isPalindrome){
-            System.out.printl+n("'" + input + "' " + "word is a palindrome.");
+            System.out.println("'" + input + "' " + "word is a palindrome.");
         }
         else{
             System.out.println("'" + input + "' " + "word is not a palindrome.");
