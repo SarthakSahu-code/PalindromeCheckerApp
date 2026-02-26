@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.Stack;
 public class PalindromeCheckerApp {
 
     public static void main(String[] args){
@@ -87,7 +88,33 @@ public class PalindromeCheckerApp {
         } else {
             System.out.println("\"" + input + "\" is not a Palindrome.");
         }
+//---------------------------------------------------------------------------------------------------
+        /**
+         * =====================================================
+         *       MAIN CLASS - UseCase4PalindromeCheckerApp
+         * =====================================================
+         *
+         * Use Case5: Stack Based Palindrome Checker
+         */
 
-        sc.close();
+        Stack <Character> stack = new Stack<>();
+        for (i=0; i<length; i++) {
+            stack.push(input.charAt(i));
+        }
+        isPalindrome = true;
+        for (i=0; i<input.length(); i++){
+            char reversedChar = stack.pop();
+            if (input.charAt(i) != reversedChar) {
+                isPalindrome = false;
+                break;
+            }
+        }
+
+        if(isPalindrome){
+            System.out.println("'" + input + "' " + "word is a palindrome.");
+        }
+        else{
+            System.out.println("'" + input + "' " + "word is not a palindrome.");
+        }
     }
 }
