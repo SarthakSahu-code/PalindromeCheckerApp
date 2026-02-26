@@ -1,5 +1,8 @@
 import java.util.Scanner;
 import java.util.Stack;
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class PalindromeCheckerApp {
 
     public static void main(String[] args){
@@ -116,5 +119,37 @@ public class PalindromeCheckerApp {
         else{
             System.out.println("'" + input + "' " + "word is not a palindrome.");
         }
+//-------------------------------------------------------------------------------------------------
+        /**
+         * =====================================================
+         *       MAIN CLASS - UseCase6PalindromeCheckerApp
+         * =====================================================
+         *
+         * Use Case6: Queue + Stack Based Palindrome Checker
+         */
+        Queue <Character> queue = new LinkedList<>();
+        for (i=0; i<length; i++){
+            char c = input.charAt(i);
+            stack.push(c);
+            queue.add(c);
+        }
+        isPalindrome =true;
+        while (!queue.isEmpty()){
+            char fromQueue = queue.remove();
+            char fromStack = stack.pop();
+
+            if(fromQueue!=fromStack){
+                isPalindrome=false;
+                break;
+            }
+        }
+
+        if (isPalindrome){
+            System.out.println("The word "+ input +" is a palindrome");
+        }
+        else{
+            System.out.println("The word "+ input +" is not a palindrome");
+        }
+
     }
 }
