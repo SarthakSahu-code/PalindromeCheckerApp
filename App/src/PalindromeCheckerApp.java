@@ -2,6 +2,8 @@ import java.util.Scanner;
 import java.util.Stack;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
 public class PalindromeCheckerApp {
 
@@ -48,7 +50,7 @@ public class PalindromeCheckerApp {
          *       MAIN CLASS - UseCase3PalindromeCheckerApp
          * =====================================================
          *
-         * Use Case3: Reverse String Based Palindrome Chcek
+         * Use Case3: Reverse String Based Palindrome Check
          */
         String reversedStr = "";
 
@@ -150,6 +152,32 @@ public class PalindromeCheckerApp {
         else{
             System.out.println("The word "+ input +" is not a palindrome");
         }
-
+//-------------------------------------------------------------------------------------------------
+        /**
+         * =====================================================
+         *       MAIN CLASS - UseCase7PalindromeCheckerApp
+         * =====================================================
+         *
+         * Use Case7: Deque based optimized palindrome checker
+         */
+        Deque<Character> deque = new ArrayDeque<>();
+        for (i=0; i<length; i++){
+            deque.add(input.charAt(i));
+        }
+        isPalindrome = true;
+        while (deque.size()>1){
+            char first = deque.removeFirst();
+            char last = deque.removeLast();
+            if(first!=last){
+                isPalindrome=false;
+                break;
+            }
+        }
+        if (isPalindrome){
+            System.out.println( input +" is a palindrome word.");
+        }
+        else{
+            System.out.println( input +" is not a palindrome word.");
+        }
     }
 }
