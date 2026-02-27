@@ -215,6 +215,30 @@ public class PalindromeCheckerApp {
         } else {
             System.out.println("\"" + input + "\" is not a Palindrome.");
         }
+//-------------------------------------------------------------------------------------------------
+        /**
+         * =====================================================
+         * MAIN CLASS - UseCase10PalindromeCheckerApp
+         * =====================================================
+         *
+         * Use Case10: Normalized Palindrome Validation
+         */
+        String normalizedInput = input.replaceAll("\\s+", "");
+        boolean isNormalizedPalindrome = true;
+        int normLength = normalizedInput.length();
+
+        for (i = 0; i < normLength / 2; i++) {
+            if (normalizedInput.charAt(i) != normalizedInput.charAt(normLength - i - 1)) {
+                isNormalizedPalindrome = false;
+                break;
+            }
+        }
+
+        if (isNormalizedPalindrome) {
+            System.out.println("The normalized string \"" + normalizedInput + "\" is a palindrome.");
+        } else {
+            System.out.println("The normalized string \"" + normalizedInput + "\" is not a palindrome.");
+        }
 
         sc.close();
     }
