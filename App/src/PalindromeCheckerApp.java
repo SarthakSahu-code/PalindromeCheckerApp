@@ -202,6 +202,19 @@ public class PalindromeCheckerApp {
         } else {
             System.out.println("\"" + input + "\" is not a Palindrome.");
         }
+//-------------------------------------------------------------------------------------------------
+        /**
+         * =====================================================
+         * MAIN CLASS - UseCase9PalindromeCheckerApp
+         * =====================================================
+         *
+         * Use Case9: Recursive Palindrome Checker
+         */
+        if (isPalindromeRecursive(input, 0, length - 1)) {
+            System.out.println("\"" + input + "\" is a Palindrome.");
+        } else {
+            System.out.println("\"" + input + "\" is not a Palindrome.");
+        }
 
         sc.close();
     }
@@ -254,5 +267,15 @@ public class PalindromeCheckerApp {
             current = current.next;
         }
         return head;
+    }
+
+    public static boolean isPalindromeRecursive(String str, int left, int right) {
+        if (left >= right) {
+            return true;
+        }
+        if (str.charAt(left) != str.charAt(right)) {
+            return false;
+        }
+        return isPalindromeRecursive(str, left + 1, right - 1);
     }
 }
