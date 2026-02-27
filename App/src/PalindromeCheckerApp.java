@@ -15,6 +15,35 @@ class ListNode {
     }
 }
 
+class PalindromeService {
+    private String text;
+
+    public PalindromeService(String text) {
+        this.text = text;
+    }
+
+    public boolean isPalindrome() {
+        if (this.text == null) {
+            return false;
+        }
+        int left = 0;
+        int right = this.text.length() - 1;
+
+        while (left < right) {
+            if (this.text.charAt(left) != this.text.charAt(right)) {
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true;
+    }
+
+    public String getText() {
+        return text;
+    }
+}
+
 public class PalindromeCheckerApp {
 
     public static void main(String[] args){
@@ -238,6 +267,21 @@ public class PalindromeCheckerApp {
             System.out.println("The normalized string \"" + normalizedInput + "\" is a palindrome.");
         } else {
             System.out.println("The normalized string \"" + normalizedInput + "\" is not a palindrome.");
+        }
+//-------------------------------------------------------------------------------------------------
+        /**
+         * =====================================================
+         * MAIN CLASS - UseCase11PalindromeCheckerApp
+         * =====================================================
+         *
+         * Use Case11: Object Oriented Palindrome Service
+         */
+        PalindromeService palindromeService = new PalindromeService(input);
+
+        if (palindromeService.isPalindrome()) {
+            System.out.println("OOP Service check: \"" + palindromeService.getText() + "\" is a palindrome.");
+        } else {
+            System.out.println("OOP Service check: \"" + palindromeService.getText() + "\" is not a palindrome.");
         }
 
         sc.close();
