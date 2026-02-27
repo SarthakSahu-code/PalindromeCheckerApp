@@ -5,12 +5,22 @@ import java.util.Queue;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
+class ListNode {
+    char val;
+    ListNode next;
+
+    ListNode(char val) {
+        this.val = val;
+        this.next = null;
+    }
+}
+
 public class PalindromeCheckerApp {
 
     public static void main(String[] args){
         /**
          * ==================================================
-         *      MAIN CLASS - UseCase1PalindromeCheckerApp
+         * MAIN CLASS - UseCase1PalindromeCheckerApp
          * ==================================================
          *
          * Use Case1: Application Entry and Welcome Message
@@ -22,7 +32,7 @@ public class PalindromeCheckerApp {
 //-------------------------------------------------------------------------------------------------
         /**
          * =====================================================
-         *       MAIN CLASS - UseCase2PalindromeCheckerApp
+         * MAIN CLASS - UseCase2PalindromeCheckerApp
          * =====================================================
          *
          * Use Case2: Hardcoded Palindrome Validation
@@ -47,7 +57,7 @@ public class PalindromeCheckerApp {
 //-----------------------------------------------------------------------------------------------------
         /**
          * =====================================================
-         *       MAIN CLASS - UseCase3PalindromeCheckerApp
+         * MAIN CLASS - UseCase3PalindromeCheckerApp
          * =====================================================
          *
          * Use Case3: Reverse String Based Palindrome Check
@@ -65,7 +75,7 @@ public class PalindromeCheckerApp {
 //-------------------------------------------------------------------------------------------------
         /**
          * =====================================================
-         *       MAIN CLASS - UseCase4PalindromeCheckerApp
+         * MAIN CLASS - UseCase4PalindromeCheckerApp
          * =====================================================
          *
          * Use Case4: Character Array based validation
@@ -79,15 +89,13 @@ public class PalindromeCheckerApp {
         while (left < right) {
             if (charArray[left] != charArray[right]) {
                 isPalindrome = false;
-                break; // Exit the loop early
+                break;
             }
 
-            // Move pointers toward the center
             left++;
             right--;
         }
 
-        // 5. Output the result
         if (isPalindrome) {
             System.out.println("\"" + input + "\" is a Palindrome.");
         } else {
@@ -96,7 +104,7 @@ public class PalindromeCheckerApp {
 //---------------------------------------------------------------------------------------------------
         /**
          * =====================================================
-         *       MAIN CLASS - UseCase5PalindromeCheckerApp
+         * MAIN CLASS - UseCase5PalindromeCheckerApp
          * =====================================================
          *
          * Use Case5: Stack Based Palindrome Checker
@@ -124,7 +132,7 @@ public class PalindromeCheckerApp {
 //-------------------------------------------------------------------------------------------------
         /**
          * =====================================================
-         *       MAIN CLASS - UseCase6PalindromeCheckerApp
+         * MAIN CLASS - UseCase6PalindromeCheckerApp
          * =====================================================
          *
          * Use Case6: Queue + Stack Based Palindrome Checker
@@ -155,7 +163,7 @@ public class PalindromeCheckerApp {
 //-------------------------------------------------------------------------------------------------
         /**
          * =====================================================
-         *       MAIN CLASS - UseCase7PalindromeCheckerApp
+         * MAIN CLASS - UseCase7PalindromeCheckerApp
          * =====================================================
          *
          * Use Case7: Deque based optimized palindrome checker
@@ -179,5 +187,72 @@ public class PalindromeCheckerApp {
         else{
             System.out.println( input +" is not a palindrome word.");
         }
+//-------------------------------------------------------------------------------------------------
+        /**
+         * =====================================================
+         * MAIN CLASS - UseCase8PalindromeCheckerApp
+         * =====================================================
+         *
+         * Use Case8: Linked List Based Palindrome Checker
+         */
+        ListNode head = buildList(input);
+
+        if (isLinkedListPalindrome(head)) {
+            System.out.println("\"" + input + "\" is a Palindrome.");
+        } else {
+            System.out.println("\"" + input + "\" is not a Palindrome.");
+        }
+
+        sc.close();
+    }
+
+    public static boolean isLinkedListPalindrome(ListNode head) {
+        if (head == null || head.next == null) return true;
+
+        ListNode slow = head;
+        ListNode fast = head;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        ListNode secondHalfHead = reverseList(slow);
+        ListNode firstHalfHead = head;
+
+        while (secondHalfHead != null) {
+            if (firstHalfHead.val != secondHalfHead.val) {
+                return false;
+            }
+            firstHalfHead = firstHalfHead.next;
+            secondHalfHead = secondHalfHead.next;
+        }
+
+        return true;
+    }
+
+    private static ListNode reverseList(ListNode head) {
+        ListNode prev = null;
+        ListNode current = head;
+
+        while (current != null) {
+            ListNode nextTemp = current.next;
+            current.next = prev;
+            prev = current;
+            current = nextTemp;
+        }
+        return prev;
+    }
+
+    public static ListNode buildList(String str) {
+        if (str == null || str.length() == 0) return null;
+
+        ListNode head = new ListNode(str.charAt(0));
+        ListNode current = head;
+        for (int i = 1; i < str.length(); i++) {
+            current.next = new ListNode(str.charAt(i));
+            current = current.next;
+        }
+        return head;
     }
 }
