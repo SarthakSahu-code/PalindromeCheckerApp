@@ -44,6 +44,49 @@ class PalindromeService {
     }
 }
 
+/**
+ * INTERFACE - PalindromeStrategy
+ */
+interface PalindromeStrategy {
+    boolean validate(String text);
+}
+
+/**
+ * CLASS - StackStrategy
+ */
+class StackStrategy implements PalindromeStrategy {
+    @Override
+    public boolean validate(String text) {
+        if (text == null) return false;
+        Stack<Character> stack = new Stack<>();
+        for (int i = 0; i < text.length(); i++) {
+            stack.push(text.charAt(i));
+        }
+        for (int i = 0; i < text.length(); i++) {
+            if (text.charAt(i) != stack.pop()) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
+class PalindromeContext {
+    private PalindromeStrategy strategy;
+
+    public PalindromeContext(PalindromeStrategy strategy) {
+        this.strategy = strategy;
+    }
+
+    public void setStrategy(PalindromeStrategy strategy) {
+        this.strategy = strategy;
+    }
+
+    public boolean executeStrategy(String text) {
+        return strategy.validate(text);
+    }
+}
+
 public class PalindromeCheckerApp {
 
     public static void main(String[] args){
@@ -274,7 +317,7 @@ public class PalindromeCheckerApp {
          * MAIN CLASS - UseCase11PalindromeCheckerApp
          * =====================================================
          *
-         * Use Case11: Object Oriented Palindrome Service
+         * Use Case11: Object-Oriented Palindrome Service
          */
         PalindromeService palindromeService = new PalindromeService(input);
 
@@ -282,6 +325,21 @@ public class PalindromeCheckerApp {
             System.out.println("OOP Service check: \"" + palindromeService.getText() + "\" is a palindrome.");
         } else {
             System.out.println("OOP Service check: \"" + palindromeService.getText() + "\" is not a palindrome.");
+        }
+//-------------------------------------------------------------------------------------------------
+        /**
+         * =====================================================
+         * MAIN CLASS - UseCase12PalindromeCheckerApp
+         * =====================================================
+         *
+         * Use Case 12: Strategy Pattern for Palindrome Algorithms
+         */
+        PalindromeContext context = new PalindromeContext(new StackStrategy());
+
+        if (context.executeStrategy(input)) {
+            System.out.println("Strategy Pattern check: \"" + input + "\" is a palindrome.");
+        } else {
+            System.out.println("Strategy Pattern check: \"" + input + "\" is not a palindrome.");
         }
 
         sc.close();
