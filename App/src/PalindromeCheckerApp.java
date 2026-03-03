@@ -97,7 +97,13 @@ public class PalindromeCheckerApp {
          *
          * Use Case1: Application Entry and Welcome Message
          *
-         * @param args
+         * Description:
+         * This use case initializes the application and
+         * displays a welcome message to the user.
+         *
+         * @author Developer
+         * @version 1.0
+         * @param args Command-line arguments
          */
         System.out.println("Welcome to Palindrome Checker App Management System");
         System.out.println("Version: 1.0");
@@ -108,6 +114,14 @@ public class PalindromeCheckerApp {
          * =====================================================
          *
          * Use Case2: Hardcoded Palindrome Validation
+         *
+         * Description:
+         * This block demonstrates a basic loop-based
+         * palindrome check comparing characters from ends
+         * towards the center.
+         *
+         * @author Developer
+         * @version 2.0
          */
         Scanner sc = new Scanner(System.in);
         System.out.println("Input Text:");
@@ -133,6 +147,13 @@ public class PalindromeCheckerApp {
          * =====================================================
          *
          * Use Case3: Reverse String Based Palindrome Check
+         *
+         * Description:
+         * This approach manually constructs a reversed
+         * string and compares it to the original input.
+         *
+         * @author Developer
+         * @version 3.0
          */
         String reversedStr = "";
 
@@ -151,6 +172,13 @@ public class PalindromeCheckerApp {
          * =====================================================
          *
          * Use Case4: Character Array based validation
+         *
+         * Description:
+         * This use case utilizes a two-pointer technique on a
+         * character array representation of the string.
+         *
+         * @author Developer
+         * @version 4.0
          */
         char[] charArray = input.toCharArray();
 
@@ -180,8 +208,14 @@ public class PalindromeCheckerApp {
          * =====================================================
          *
          * Use Case5: Stack Based Palindrome Checker
+         *
+         * Description:
+         * This block demonstrates checking for a palindrome
+         * using a Stack's LIFO (Last-In-First-Out) property.
+         *
+         * @author Developer
+         * @version 5.0
          */
-
         Stack <Character> stack = new Stack<>();
         for (i=0; i<length; i++) {
             stack.push(input.charAt(i));
@@ -207,7 +241,26 @@ public class PalindromeCheckerApp {
          * MAIN CLASS - UseCase6PalindromeCheckerApp
          * =====================================================
          *
-         * Use Case6: Queue + Stack Based Palindrome Checker
+         * Use Case 6: Queue + Stack Based Palindrome Checker
+         *
+         * Description:
+         * This class measures and compares the execution
+         * performance of palindrome validation algorithms
+         * using both a Stack and a Queue.
+         *
+         * At this stage, the application:
+         * - Uses a Stack (LIFO) and Queue (FIFO) structure
+         * - Pushes and adds characters respectively
+         * - Pops and removes characters respectively
+         * - Compares the outputs from both structures
+         *
+         * This use case focuses purely on combining
+         * standard data structures to solve the problem.
+         *
+         * The goal is to demonstrate multi-structure logic.
+         *
+         * @author Developer
+         * @version 6.0
          */
         Queue <Character> queue = new LinkedList<>();
         for (i=0; i<length; i++){
@@ -239,6 +292,13 @@ public class PalindromeCheckerApp {
          * =====================================================
          *
          * Use Case7: Deque based optimized palindrome checker
+         *
+         * Description:
+         * This approach leverages a Double-Ended Queue (Deque)
+         * to efficiently compare characters from both ends.
+         *
+         * @author Developer
+         * @version 7.0
          */
         Deque<Character> deque = new ArrayDeque<>();
         for (i=0; i<length; i++){
@@ -266,6 +326,13 @@ public class PalindromeCheckerApp {
          * =====================================================
          *
          * Use Case8: Linked List Based Palindrome Checker
+         *
+         * Description:
+         * This block handles checking for a palindrome when the
+         * data is stored in a custom singly linked list.
+         *
+         * @author Developer
+         * @version 8.0
          */
         ListNode head = buildList(input);
 
@@ -281,6 +348,13 @@ public class PalindromeCheckerApp {
          * =====================================================
          *
          * Use Case9: Recursive Palindrome Checker
+         *
+         * Description:
+         * This block utilizes a recursive function to
+         * evaluate if the string is a palindrome.
+         *
+         * @author Developer
+         * @version 9.0
          */
         if (isPalindromeRecursive(input, 0, length - 1)) {
             System.out.println("\"" + input + "\" is a Palindrome.");
@@ -294,6 +368,13 @@ public class PalindromeCheckerApp {
          * =====================================================
          *
          * Use Case10: Normalized Palindrome Validation
+         *
+         * Description:
+         * This use case strips whitespace from the input
+         * before performing the palindrome check.
+         *
+         * @author Developer
+         * @version 10.0
          */
         String normalizedInput = input.replaceAll("\\s+", "");
         boolean isNormalizedPalindrome = true;
@@ -317,7 +398,14 @@ public class PalindromeCheckerApp {
          * MAIN CLASS - UseCase11PalindromeCheckerApp
          * =====================================================
          *
-         * Use Case11: Object-Oriented Palindrome Service
+         * Use Case11: Object Oriented Palindrome Service
+         *
+         * Description:
+         * This block instantiates a PalindromeService object
+         * to perform the validation, encapsulating state and behavior.
+         *
+         * @author Developer
+         * @version 11.0
          */
         PalindromeService palindromeService = new PalindromeService(input);
 
@@ -333,6 +421,25 @@ public class PalindromeCheckerApp {
          * =====================================================
          *
          * Use Case 12: Strategy Pattern for Palindrome Algorithms
+         *
+         * Description:
+         * This class demonstrates how different palindrome
+         * validation algorithms can be selected dynamically
+         * at runtime using the Strategy Design Pattern.
+         *
+         * At this stage, the application:
+         * - Defines a common PalindromeStrategy interface
+         * - Implements a concrete Stack based strategy
+         * - Injects the strategy at runtime
+         * - executes the selected algorithm
+         *
+         * No performance comparison is done in this use case.
+         * The focus is purely on algorithm interchangeability.
+         *
+         * The goal is to teach extensible algorithm design.
+         *
+         * @author Developer
+         * @version 12.0
          */
         PalindromeContext context = new PalindromeContext(new StackStrategy());
 
@@ -341,6 +448,42 @@ public class PalindromeCheckerApp {
         } else {
             System.out.println("Strategy Pattern check: \"" + input + "\" is not a palindrome.");
         }
+//-------------------------------------------------------------------------------------------------
+        /**
+         * =====================================================
+         * MAIN CLASS - UseCase13PalindromeCheckerApp
+         * =====================================================
+         *
+         * Use Case 13: Performance Comparison
+         *
+         * Description:
+         * This class measures and compares the execution
+         * performance of palindrome validation algorithms.
+         *
+         * At this stage, the application:
+         * - Uses a palindrome strategy implementation
+         * - Captures execution start and end time
+         * - Calculates total execution duration
+         * - Displays benchmarking results
+         *
+         * This use case focuses purely on performance
+         * measurement and algorithm comparison.
+         *
+         * The goal is to introduce benchmarking concepts.
+         *
+         * @author Developer
+         * @version 13.0
+         */
+        PalindromeContext benchmarkContext = new PalindromeContext(new StackStrategy());
+
+        long startTime = System.nanoTime();
+        boolean benchmarkResult = benchmarkContext.executeStrategy(input);
+        long endTime = System.nanoTime();
+        long executionTime = endTime - startTime;
+
+        System.out.println("Input : " + input);
+        System.out.println("Is Palindrome? : " + benchmarkResult);
+        System.out.println("Execution Time : " + executionTime + " ns");
 
         sc.close();
     }
